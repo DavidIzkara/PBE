@@ -12,6 +12,7 @@ class Puzzle1:
       print("Has puesto más caracteres de los que se puede, ingrese otro String")
       texto = input("Por favor ingrese otro String: ")
     return texto
+
   def Imprimir(self, text):
     aux=0
     linea=1 #irá del 1 al 4, pero habrá que restarle 1 para usarlo (otherwise habría que sumarle 1)
