@@ -12,7 +12,7 @@ class Mejorado1:
 
   def Imprimir(self, text):
     for i, line in enumerate(text.splitlines()): 
-      self.lcd.print_line(line, i)
+      self.lcd.print_line(line, i, 'CENTER')
 
   def MaxCar(self, text):
     while(len(text)>80):
