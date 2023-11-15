@@ -18,11 +18,11 @@ class Puzzle1:
     linea=1 #irá del 1 al 4, pero habrá que restarle 1 para usarlo (otherwise habría que sumarle 1)
     while(aux!=len(text)):
       if len(text)-aux>20:
-        self.lcd.print_line(text[aux:(linea*20)], linea-1)
+        self.lcd.print_line(text[aux:(linea*20)], linea-1, 'CENTER')
         aux=aux+20
         linea=linea+1
       else:
-        self.lcd.print_line(text[aux:len(text)], linea-1)
+        self.lcd.print_line(text[aux:len(text)], linea-1, 'CENTER')
         aux=len(text)
         linea=linea+1
 
