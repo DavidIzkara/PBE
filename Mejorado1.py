@@ -8,14 +8,15 @@ class Mejorado1:
 
   def Leer(self): #Devuelve un String que contiene entre 0 y 80 caracteres
     texto = input("Por favor ingrese un String: ") 
-    return MaxCar(texto)    #No he comprobado si funciona (aún)
+    newtxt = self.MaxCar(texto)    
+    return newtxt
 
   def Imprimir(self, text):
     for i, line in enumerate(text.splitlines()): 
       self.lcd.print_line(line, i, 'CENTER')
 
   def MaxCar(self, text):
-    while(len(text)>80):
+    while len(text) > 80:
       print("Has puesto más caracteres de los que se puede, ingrese otro String")
       text = input("Por favor ingrese otro String: ")
     return text
