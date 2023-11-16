@@ -12,7 +12,8 @@ class Mejorado1:
     return newtxt
 
   def Imprimir(self, text):
-    for i, line in enumerate(text.splitlines()): 
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
       self.lcd.print_line(line, i, 'CENTER')
 
   def MaxCar(self, text):
