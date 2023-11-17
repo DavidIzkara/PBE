@@ -6,21 +6,29 @@ class Mejorado1:
     self.lcd = i2clcd.i2clcd(i2c_bus=1, i2c_addr=0x27, lcd_width=20)
     self.lcd.init()
 
-  def Leer(self): #Devuelve un String que contiene entre 0 y 80 caracteres
-    texto = input("Por favor ingrese un String: ") 
-    newtxt = self.MaxCar(texto)    
-    return newtxt
+  def Leer(self): 
+    texto = input("Por favor ingrese un String: ")   
+    return texto
 
-  def Imprimir(self, text):
-    lines = text.splitlines()
-    for i, line in enumerate(lines):
-      self.lcd.print_line(line, i, 'CENTER')
+def imprimir_lcd(texto, max_caracteres_por_linea):
+    palabras = texto.split()
+    lineas = ['']
+    for palabra in palabras:
+        if '\n' in palabra:
+            partes = palabra.split('\n')
+            for parte in partes:
+                if len(lineas[-1] + parte) <= max_caracteres_por_linea:
+                    lineas[-1] += parte + ' '
+                else:
+                    lineas.append(parte + ' ')
+        elif len(lineas[-1] + palabra) <= max_caracteres_por_linea:
+            lineas[-1] += palabra + ' '
+        else:
+            lineas.append(palabra + ' ')
 
-  def MaxCar(self, text):
-    while len(text) > 80:
-      print("Has puesto más caracteres de los que se puede, ingrese otro String")
-      text = input("Por favor ingrese otro String: ")
-    return text
+    for i, line in enumerate(lineas):
+       self.lcd.print_line(line.rstrip(), i, 'CENTER')
+
         
   def Main(self):
     self.__init__()
